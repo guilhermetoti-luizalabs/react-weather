@@ -1,7 +1,7 @@
 {
-  "name": "react-base",
+  "name": "React-Weather",
   "version": "1.0.0",
-  "description": "My development base to React projects",
+  "description": "My React app to check weather",
   "main": "index.js",
   "scripts": {
     "production": "webpack -p",
