@@ -27,7 +27,9 @@ var SearchBox = React.createClass({
       'search': ''
     });
 
-    this.context.router.push('/weather/' + this.state.search)
+    if(this.state.search) {
+      this.context.router.push('/weather/' + this.state.search)
+    }
   },
 
   render: function() {
