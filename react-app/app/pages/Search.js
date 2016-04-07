@@ -2,6 +2,8 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 var getForecast = require('../helpers/api').getForecast;
+var Loading = require('../components/Loading');
+var Forecast = require('../containers/Forecast');
 
 var Search = React.createClass({
   contextTypes: {
@@ -14,18 +16,18 @@ var Search = React.createClass({
     }
   },
   componentDidMount: function() {
-    getForecast(this.props.routeParams.search)
+    const searchParam = this.props.routeParams.search;
+    getForecast(searchParam)
     .then(function(data) {
         this.setState({
             isLoading: false,
-            data: data
+            data: data,
+            searchParam: searchParam
         });
     }.bind(this));
   },
   render: function() {
-    return (
-      <p>{this.state.isLoading && "Carregando..." || `Data: ${this.state.data.city}/${this.state.data.state}`}</p>
-    )
+    return this.state.isLoading && <Loading /> || <Forecast city={this.state.searchParam} data={this.state.data} />
   }
 });
 
