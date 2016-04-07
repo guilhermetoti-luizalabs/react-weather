@@ -1,9 +1,11 @@
-var React = require('react');
-var NavBar = require('./NavBar');
-var styles = require('../styles');
+import React, { Component } from 'react';
+import NavBar from './NavBar';
 
-var Main = React.createClass({
-  render: function() {
+import { styles } from '../styles';
+
+
+export default class Main extends Component {
+  render() {
     return (
       <div className='container-fluid'>
         <NavBar />
@@ -16,6 +18,4 @@ var Main = React.createClass({
       </div>
     )
   }
-});
-
-module.exports = Main;
+};

@@ -1,16 +1,12 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var hashHistory = ReactRouter.hashHistory;
-var IndexRoute = ReactRouter.IndexRoute;
-var Main = require("../containers/Main");
+import React from 'react';
+import ReactRouter, { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
-var Home = require("../pages/Home");
-var Search = require("../pages/Search");
+import Main from '../containers/Main';
+import Home from '../pages/Home';
+import Search from '../pages/Search';
 
 
-var routes = (
+export const routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={Home} />
@@ -18,5 +14,3 @@ var routes = (
     </Route>
   </Router>
 );
-
-module.exports = routes;

@@ -1,7 +1,6 @@
-var styles = {
+
+export const styles = {
     bodyContainer: {
         marginTop: '60px'
     }
-};
-
-module.exports = styles;
+}

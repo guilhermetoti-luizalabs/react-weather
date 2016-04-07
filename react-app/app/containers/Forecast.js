@@ -1,11 +1,17 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { Component, PropTypes } from 'react';
 
-var DayItem = require('../components/DayItem');
+const { array, string } = PropTypes;
+
+import DayItem from '../components/DayItem';
 
 
-var Forecast = React.createClass({
-  render: function() {
+export default class Forecast extends Component {
+  static propTypes = {
+    data: array.isRequired,
+    city: string.isRequired
+  };
+
+  render() {
     return (
       <div>
         <h1>{this.props.city}</h1>
@@ -16,11 +22,4 @@ var Forecast = React.createClass({
       </div>
     )
   }
-});
-
-Forecast.propTypes = {
-  data: PropTypes.array.isRequired,
-  city: PropTypes.string.isRequired
 }
-
-module.exports = Forecast;

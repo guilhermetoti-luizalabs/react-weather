@@ -1,11 +1,9 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-var Loading = React.createClass({
-  render: function() {
+export default class Loading extends Component {
+  render() {
     return (
       <div>Carregando...</div>
     )
   }
-});
-
-module.exports = Loading;
+}

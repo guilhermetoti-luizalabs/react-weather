@@ -1,21 +1,19 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { Component, PropTypes } from 'react';
 
-var getDate = require('../helpers/utils');
+const { shape, number } = PropTypes;
+
+import { getDate } from '../helpers/utils';
 
 
-var DayItem = React.createClass({
-    render: function() {
+export default class DayItem extends Component {
+    static propTypes = {
+        data: shape({
+            dt: number.isRequired
+        })
+    }
+
+    render() {
         const formatedDate = getDate(this.props.data.dt);
-
         return <div>{formatedDate}</div>
     }
-});
-
-DayItem.PropTypes = {
-    data: PropTypes.shape({
-        dt: PropTypes.number.isRequired
-    })
 }
-
-module.exports = DayItem;

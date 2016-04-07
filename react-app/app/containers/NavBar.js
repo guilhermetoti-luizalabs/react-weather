@@ -1,8 +1,9 @@
-var React = require('react');
-var SearchBox = require('../containers/SearchBox');
+import React, { Component } from 'react';
+import SearchBox from '../containers/SearchBox';
 
-var NavBar = React.createClass({
-  render: function() {
+
+export default class NavBar extends Component {
+  render() {
     return (
       <nav className='navbar navbar-default navbar-fixed-top'>
         <div className='container-fluid'>
@@ -14,6 +15,4 @@ var NavBar = React.createClass({
       </nav>
     )
   }
-});
-
-module.exports = NavBar;
+}

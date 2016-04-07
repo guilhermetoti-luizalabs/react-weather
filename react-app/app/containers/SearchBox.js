@@ -1,25 +1,26 @@
-var React = require('react');
+import React, { Component, PropTypes } from 'react';
 
-var SearchBox = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
+const { object } = PropTypes;
 
-  getInitialState: function() {
-    return {
-      'search': ''
-    }
-  },
 
-  handleChange: function(event) {
+export default class SearchBox extends Component {
+  static contextTypes = {
+    router: object.isRequired
+  };
+
+  state = {
+    'search': ''
+  };
+
+  handleChange = (event) => {
     const value = event.target.value;
 
     this.setState({
       'search': value
     });
-  },
+  }
 
-  handleSubmit: function(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     const search = this.state.search;
 
@@ -30,9 +31,9 @@ var SearchBox = React.createClass({
     if(this.state.search) {
       this.context.router.push('/weather/' + this.state.search)
     }
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <form className='navbar-form navbar-right' role='search' onSubmit={this.handleSubmit}>
         <div className='input-group'>
@@ -44,6 +45,4 @@ var SearchBox = React.createClass({
       </form>
     )
   }
-});
-
-module.exports = SearchBox;
+}
