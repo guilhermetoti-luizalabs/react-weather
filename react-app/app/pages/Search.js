@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ReactRouter, { Link } from 'react-router';
+import ReactRouter from 'react-router';
 
 const { object } = PropTypes;
 
@@ -16,22 +16,35 @@ export default class Search extends Component {
 
   state = {
     isLoading: true,
-    data: {}
+    data: {},
+    searchParam: ''
   };
 
   componentDidMount() {
     const searchParam = this.props.routeParams.search;
-    getForecast(searchParam)
+    this.makeRequest(searchParam);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const search = nextProps.routeParams.search;
+    this.makeRequest(search);
+  }
+
+  makeRequest(search) {
+    getForecast(search)
     .then((data) => {
       this.setState({
           isLoading: false,
           data: data,
-          searchParam: searchParam
+          searchParam: search
       });
     });
   }
 
   render() {
-    return this.state.isLoading && <Loading /> || <Forecast city={this.state.searchParam} data={this.state.data} />
+    return this.state.isLoading && <Loading /> ||
+      this.state.data && <Forecast
+        city={this.state.searchParam}
+        data={this.state.data} /> || <p>Sem dados</p>
   }
 };

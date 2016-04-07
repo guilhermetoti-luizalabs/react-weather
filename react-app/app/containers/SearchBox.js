@@ -28,8 +28,11 @@ export default class SearchBox extends Component {
       'search': ''
     });
 
-    if(this.state.search) {
-      this.context.router.push('/weather/' + this.state.search)
+    if(search) {
+      this.context.router.push({
+        pathname: '/weather/' + search,
+        state: {searchParam: search}
+      });
     }
   }
 
